@@ -6,10 +6,10 @@ function wait_for_ldap {
     ldapsearch -h localhost -p 10389 -D 'uid=admin,ou=system' -w secret ou=system;
     
     while [ $? -ne 0 ]; do
-        echo "LDAP not up yet... retrying... ($c/10)"
-        sleep 2
+        echo "LDAP not up yet... retrying... ($c/20)"
+        sleep 4
  		
- 		if [ $c -eq 10 ]; then
+ 		if [ $c -eq 20 ]; then
  			echo "TROUBLE!!! After [${c}] retries LDAP is still dead :("
  			exit 2
  		fi
