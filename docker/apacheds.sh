@@ -46,6 +46,9 @@ if [ -n "${BOOTSTRAP_FILE}" ]; then
 	ldapmodify -h localhost -p 10389 -D 'uid=admin,ou=system' -w secret -f $BOOTSTRAP_FILE
 fi
 
-trap "/opt/apacheds-2.0.0_M20/bin/apacheds stop default" SIGTERM SIGKILL
+trap "echo 'Stoping Apache DS';/opt/apacheds-2.0.0_M20/bin/apacheds stop default;exit 0" SIGTERM SIGKILL
 
-tail -f /dev/null # wait indefinitely
+while true
+do
+  tail -f /dev/null & wait ${!}
+done

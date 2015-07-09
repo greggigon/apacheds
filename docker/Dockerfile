@@ -15,4 +15,5 @@ VOLUME /bootstrap
 
 ENTRYPOINT /usr/local/bin/apacheds.sh
 
-EXPOSE [10389]
+EXPOSE 10389
+EXPOSE 389
