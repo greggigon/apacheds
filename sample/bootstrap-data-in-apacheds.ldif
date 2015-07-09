@@ -1,0 +1,15 @@
+dn: ou=users,dc=dev,dc=com
+changetype: add
+objectclass: top
+objectclass: organizationalUnit
+ou: users
+
+dn: uid=greg.gigon,ou=users,dc=dev,dc=com
+changetype: add
+objectclass: top
+objectclass: users
+cn: Greg
+sn: Gigon
+email: greg.gigon@themail.com
+uid: greg.gigon
+
