@@ -5,6 +5,8 @@ Apache DS is a Java implementation of Directory server (**LDAP**). This projects
 
 [Apache DS Page](1) that explains what it is.
 
+[Docker registry entry](3) for this container.
+
 ## Running container
 Simply run the container with docker:
 
@@ -48,5 +50,9 @@ If you have some extra data you want to put into Directory, you can place a file
 > Pull request for contributions are always WELCOME! :)
 
 
+
+
+
 [1]: https://directory.apache.org/apacheds/
 [2]: https://github.com/greggigon/apacheds-docker-container/tree/master/sample
+[3]: https://registry.hub.docker.com/u/greggigon/apacheds/
