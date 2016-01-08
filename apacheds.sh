@@ -19,7 +19,7 @@ function wait_for_ldap {
     done 
 }
 
-if [ -f /bootstrap/config.ldif ]; then
+if [ -f /bootstrap/config.ldif ] && [ ! -f /var/lib/apacheds-2.0.0_M20/default/conf/config.ldif_migrated ]; then
 	echo "Using config file from /bootstrap/config.ldif"
 	rm -rf /var/lib/apacheds-2.0.0_M20/default/conf/config.ldif
 
