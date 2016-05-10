@@ -1,4 +1,7 @@
 #!/bin/bash
+
+APACHEDS_INSTANCE=/var/lib/apacheds-2.0.0_M20/default
+
 function wait_for_ldap {
 	echo "Waiting for LDAP to be available "
 	c=0
@@ -19,24 +22,24 @@ function wait_for_ldap {
     done 
 }
 
-if [ -f /bootstrap/config.ldif ] && [ ! -f /var/lib/apacheds-2.0.0_M20/default/conf/config.ldif_migrated ]; then
+if [ -f /bootstrap/config.ldif ] && [ ! -f ${APACHEDS_INSTANCE}/conf/config.ldif_migrated ]; then
 	echo "Using config file from /bootstrap/config.ldif"
-	rm -rf /var/lib/apacheds-2.0.0_M20/default/conf/config.ldif
+	rm -rf ${APACHEDS_INSTANCE}/conf/config.ldif
 
-	cp /bootstrap/config.ldif /var/lib/apacheds-2.0.0_M20/default/conf/
-	chown apacheds.apacheds /var/lib/apacheds-2.0.0_M20/default/conf/config.ldif
+	cp /bootstrap/config.ldif ${APACHEDS_INSTANCE}/conf/
+	chown apacheds.apacheds ${APACHEDS_INSTANCE}/conf/config.ldif
 fi
 
 if [ -d /bootstrap/schema ]; then
 	echo "Using schema from /bootstrap/schema directory"
-	rm -rf /var/lib/apacheds-2.0.0_M20/default/partitions/schema 
+	rm -rf ${APACHEDS_INSTANCE}/partitions/schema 
 
-	cp -R /bootstrap/schema/ /var/lib/apacheds-2.0.0_M20/default/partitions/
-	chown -R apacheds.apacheds /var/lib/apacheds-2.0.0_M20/default/partitions/
+	cp -R /bootstrap/schema/ ${APACHEDS_INSTANCE}/partitions/
+	chown -R apacheds.apacheds ${APACHEDS_INSTANCE}/partitions/
 fi
 
 # There should be no correct scenario in which the pid file is present at container start
-rm -f /var/lib/apacheds-2.0.0_M20/default/run/apacheds-default.pid 
+rm -f ${APACHEDS_INSTANCE}/run/apacheds-default.pid 
 
 /opt/apacheds-2.0.0_M20/bin/apacheds start default
 
