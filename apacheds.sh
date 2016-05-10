@@ -35,6 +35,9 @@ if [ -d /bootstrap/schema ]; then
 	chown -R apacheds.apacheds /var/lib/apacheds-2.0.0_M20/default/partitions/
 fi
 
+# There should be no correct scenario in which the pid file is present at container start
+rm -f /var/lib/apacheds-2.0.0_M20/default/run/apacheds-default.pid 
+
 /opt/apacheds-2.0.0_M20/bin/apacheds start default
 
 wait_for_ldap
