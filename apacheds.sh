@@ -1,6 +1,6 @@
 #!/bin/bash
 
-APACHEDS_INSTANCE=/var/lib/apacheds-2.0.0_M20/default
+APACHEDS_INSTANCE=/var/lib/apacheds-2.0.0_M24/default
 
 function wait_for_ldap {
 	echo "Waiting for LDAP to be available "
@@ -41,7 +41,7 @@ fi
 # There should be no correct scenario in which the pid file is present at container start
 rm -f ${APACHEDS_INSTANCE}/run/apacheds-default.pid 
 
-/opt/apacheds-2.0.0_M20/bin/apacheds start default
+/opt/apacheds-2.0.0_M24/bin/apacheds start default
 
 wait_for_ldap
 
@@ -52,7 +52,7 @@ if [ -n "${BOOTSTRAP_FILE}" ]; then
 	ldapmodify -h localhost -p 10389 -D 'uid=admin,ou=system' -w secret -f $BOOTSTRAP_FILE
 fi
 
-trap "echo 'Stoping Apache DS';/opt/apacheds-2.0.0_M20/bin/apacheds stop default;exit 0" SIGTERM SIGKILL
+trap "echo 'Stopping Apache DS';/opt/apacheds-2.0.0_M24/bin/apacheds stop default;exit 0" SIGTERM SIGKILL
 
 while true
 do
