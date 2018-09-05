@@ -39,6 +39,7 @@ Sample schema can be found in a [sample/schema.tar](2) in this GitHub repository
 If you want to use specific **config.ldif** to setup Apache DS place it in the mounted volume for **/bootstrap** directory. Container will pick it up automaticaly.
 
 If you have some extra data you want to put into Directory, you can place a file in the **/bootstrap** mounting folder and setup Environment variable **BOOTSTRAP_FILE**.
+Further options to the ldapmodify command that will evaluate your bootsrap file can be set with **BOOTSTRAP_OPTS** (e.g. BOOTSTRAP_OPTS=-a for adding new entries). 
 
 	docker run -d -p 10389:10389 -v /onmyhost:/bootstrap -e BOOTSTRAP_FILE=/bootstrap/the-file.ldif greggigon/apacheds
 

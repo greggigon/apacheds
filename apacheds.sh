@@ -49,7 +49,7 @@ wait_for_ldap
 if [ -n "${BOOTSTRAP_FILE}" ]; then
 	echo "Bootstraping Apache DS with Data from ${BOOTSTRAP_FILE}"
 	
-	ldapmodify -h localhost -p 10389 -D 'uid=admin,ou=system' -w secret -f $BOOTSTRAP_FILE
+	ldapmodify -h localhost -p 10389 -D 'uid=admin,ou=system' -w secret -f $BOOTSTRAP_FILE $BOOTSTRAP_OPTS
 fi
 
 trap "echo 'Stopping Apache DS';/opt/apacheds-2.0.0_M24/bin/apacheds stop default;exit 0" SIGTERM SIGKILL
