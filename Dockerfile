@@ -12,11 +12,10 @@ RUN yum -y update \
     && rm -rf /tmp/apacheds.rpm
     
 RUN mkdir -p /bootstrap \
-    && ln -s /var/lib/apacheds-2.0.0_M24/default/partitions /data \
+    && ln -s /var/lib/apacheds-2.0.0.AM25/default/partitions /data \
     && chmod +x /usr/local/bin/apacheds.sh \
     && chown -R apacheds.apacheds /data \
-    && chown -R apacheds.apacheds /var/lib/apacheds-2.0.0_M24/default/partitions
-
+    && chown -R apacheds.apacheds /var/lib/apacheds-2.0.0.AM25/default/partitions
 
 VOLUME /data
 VOLUME /bootstrap
